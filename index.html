@@ -8,33 +8,19 @@
 :root{--bg:#0c1512;--p1:#12201b;--p2:#172b23;--ln:#1f3a2e;--tx:#e9f2ec;--mut:#8ea89a;--grn:#3fbf87;--gold:#d9a441;--bad:#e0685f}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1180px;margin:0 auto;padding:26px 22px 70px}
-.full{grid-column:1/3}
+[hidden]{display:none!important}
 .k{color:var(--gold);font:600 11px/1 system-ui;letter-spacing:1.5px;text-transform:uppercase}
 .card{background:var(--p1);border:1px solid var(--ln);border-radius:16px;padding:22px}
 h1{font-size:26px;margin:10px 0 8px}
 p.lead{color:var(--mut);font-size:15px}
-.pill{display:inline-block;background:var(--p2);border:1px solid var(--ln);color:var(--grn);border-radius:20px;padding:6px 12px;font:600 12px/1 system-ui;margin:6px 6px 0 0;letter-spacing:.5px}
-.btns{margin-top:16px}
-.btn{border:none;border-radius:11px;padding:12px 18px;font:600 14px/1 system-ui;cursor:pointer;margin-right:10px}
-.b1{background:var(--grn);color:#062015}
-.b2{background:transparent;color:var(--tx);border:1px solid var(--ln)}
-.b1:hover{filter:brightness(1.07)}
-.b2:hover{background:var(--p2)}
-.radar{display:flex;justify-content:center;align-items:center}
-.grid4{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.mini{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:14px}
-.mini .kk{color:var(--mut);font:600 10px/1 system-ui;letter-spacing:1px;text-transform:uppercase}
-.mini .num{font-size:22px;font-weight:800;margin:6px 0 4px}
-.mini.gold{border-color:#554311}
-.mini.gold .num{color:var(--gold)}
-.mini p{color:var(--mut);font-size:12.5px}
-.axis{display:flex;justify-content:space-between;font-size:13px;margin:9px 0 3px}
-.bar{height:8px;background:#213a2f;border-radius:5px;overflow:hidden}
-.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--grn),var(--gold));width:0;transition:width .5s ease}
-.foot{color:var(--mut);font-size:11.5px;margin-top:14px;border-top:1px solid var(--ln);padding-top:12px}
-/* ---- intro + question flow (single-column, DIM-themed) ---- */
-.solo{max-width:660px;margin:0 auto;padding:34px 22px 70px}
+.btn{border:none;border-radius:11px;padding:12px 18px;font:600 14px/1 system-ui;cursor:pointer}
+.b1{background:var(--grn);color:#062015}.b1:hover{filter:brightness(1.07)}
+.b2{background:transparent;color:var(--tx);border:1px solid var(--ln)}.b2:hover{background:var(--p2)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btnfull{width:100%}
+
+/* ---------- INTRO / QUESTION (single column) ---------- */
+.solo{max-width:660px;margin:0 auto;padding:34px 22px 60px}
 .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
 .brand .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--grn),var(--gold));display:flex;align-items:center;justify-content:center;color:#062015;font-weight:800;font-size:15px}
 .brand .t{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
@@ -42,30 +28,49 @@ p.lead{color:var(--mut);font-size:15px}
 .brand .spot{margin-left:auto;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid #554311;padding:4px 9px;border-radius:999px;background:rgba(217,164,65,.08)}
 .rule{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:14px 16px;color:var(--tx);font-size:14.5px;margin:14px 0 22px}
 .rule b{color:var(--gold)}
-.btnfull{width:100%;margin-right:0}
-.progress-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.progress-top .step{font-size:13px;color:var(--mut);letter-spacing:.04em}
-.tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid #554311;padding:4px 9px;border-radius:999px;background:rgba(217,164,65,.08)}
-.qbar{height:6px;background:#213a2f;border-radius:999px;overflow:hidden;margin-bottom:22px}
-.qbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--grn),var(--gold));width:0;transition:width .25s ease}
-.qtext{font-size:21px;font-weight:700;line-height:1.3;margin:0 0 18px}
-.choices{display:flex;flex-direction:column;gap:12px}
-.choice{text-align:left;cursor:pointer;background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:15px;color:var(--tx);font-size:15.5px;display:flex;align-items:center;gap:14px;transition:border-color .12s,background .12s}
-.choice:hover{border-color:var(--grn);background:#1c332a}
-.choice .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--ln);flex:0 0 auto;display:flex;align-items:center;justify-content:center}
-.choice.sel{border-color:var(--grn);background:#1c332a}
-.choice.sel .dot{border-color:var(--grn)}
-.choice.sel .dot::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--grn)}
-.nav{display:flex;gap:12px;margin-top:22px}
-.nav .btn{flex:1;margin-right:0}
-.hidden{display:none!important}
-@media(max-width:720px){.wrap{grid-template-columns:1fr}.full{grid-column:1}}
+
+.q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.q-counter{font-size:13px;color:var(--mut);letter-spacing:.04em}
+.q-axis{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid #554311;padding:4px 9px;border-radius:999px;background:rgba(217,164,65,.08)}
+.q-title{font-size:21px;font-weight:700;line-height:1.3;margin:0 0 8px}
+.q-helper{color:var(--mut);font-size:13.5px;margin-bottom:20px}
+.answer-list{display:flex;flex-direction:column;gap:10px}
+.answer-btn{text-align:left;cursor:pointer;background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:15px;color:var(--tx);font:500 15.5px/1.3 system-ui;display:flex;align-items:center;gap:14px;transition:border-color .12s,background .12s}
+.answer-btn::before{content:'';width:20px;height:20px;border-radius:50%;border:2px solid var(--ln);flex:0 0 auto;transition:border-color .12s}
+.answer-btn:hover{border-color:var(--grn);background:#1c332a}
+.answer-btn.is-selected{border-color:var(--grn);background:#1c332a}
+.answer-btn.is-selected::before{border-color:var(--grn);box-shadow:inset 0 0 0 4px var(--grn)}
+.q-nav{display:flex;gap:12px;margin-top:22px}
+.q-nav .btn{flex:1}
+
+/* ---------- RESULTS (two column grid) ---------- */
+.wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1180px;margin:0 auto;padding:26px 22px 70px}
+.full{grid-column:1/3}
+.pill{display:inline-block;background:var(--p2);border:1px solid var(--ln);color:var(--grn);border-radius:20px;padding:6px 12px;font:600 12px/1 system-ui;margin:6px 6px 0 0;letter-spacing:.5px}
+.band{display:inline-block;font-size:14px;font-weight:800;letter-spacing:.05em;padding:7px 16px;border-radius:999px;margin:6px 0 4px;text-transform:uppercase;background:var(--p2);border:1px solid #554311;color:var(--gold)}
+.score-big{font-size:60px;font-weight:800;line-height:1;color:var(--grn)}
+.score-cap{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-top:4px}
+.btns{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.radar{display:flex;justify-content:center;align-items:center}
+.axis{display:flex;justify-content:space-between;font-size:13px;margin:11px 0 3px}
+.axis b{color:var(--tx)}
+.bar{height:8px;background:#213a2f;border-radius:5px;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--grn),var(--gold));transition:width .5s ease}
+.brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.brief-card{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:14px}
+.brief-card__top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.brief-card__label{font:600 13px/1 system-ui;color:var(--tx)}
+.brief-card__score{font-size:18px;font-weight:800;color:var(--grn)}
+.brief-card__body{color:var(--mut);font-size:13px;margin:0}
+.subhead{font-size:13px;font-weight:700;color:var(--tx);margin:0 0 4px}
+.foot{color:var(--mut);font-size:11.5px;margin-top:16px;border-top:1px solid var(--ln);padding-top:12px}
+@media(max-width:720px){.wrap{grid-template-columns:1fr}.full{grid-column:1}.brief-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- ============ SCREEN 1: INTRO ============ -->
-<div id="screen-intro" class="solo">
+<!-- ============ INTRO ============ -->
+<section id="introScreen" class="solo">
   <div class="brand">
     <div class="mark">D</div>
     <div class="t"><b>Dynasty</b> &middot; Decision Intelligence</div>
@@ -74,258 +79,526 @@ p.lead{color:var(--mut);font-size:15px}
   <div class="card">
     <div class="k">Texas SB 2610 &middot; Safe Harbor Readiness</div>
     <h1>Before we talk about a breach.</h1>
-    <p class="lead">Ten quick questions. No jargon. This maps how defensible your cybersecurity program is <b style="color:var(--tx)">today</b> under Texas SB 2610 &mdash; so if an incident ever hits, you can prove you did the right things.</p>
+    <p class="lead">Ten quick questions across five dimensions. This maps how defensible your Safe Harbor posture is <b style="color:var(--tx)">today</b> under Texas SB 2610 &mdash; so if an incident ever hits, you can prove you did the right things.</p>
     <div class="rule"><b>Documented beats good intentions.</b> The safe harbor protects owners who had a written, maintained program before the incident &mdash; not after. Let&rsquo;s find out where you stand.</div>
-    <button class="btn b1 btnfull" id="startBtn">Start &mdash; takes about 3 minutes</button>
+    <button type="button" class="btn b1 btnfull" id="startBtn">Start &mdash; takes about 3 minutes</button>
   </div>
   <p class="foot" style="border:0;text-align:center">Readiness estimate only. Not legal advice and no guarantee of safe harbor. Actual damages, fines, and other remedies may still apply.</p>
-</div>
+</section>
 
-<!-- ============ SCREEN 2: QUESTIONS ============ -->
-<div id="screen-q" class="solo hidden">
+<!-- ============ QUESTIONS ============ -->
+<section id="questionScreen" class="solo" hidden>
   <div class="brand">
     <div class="mark">D</div>
     <div class="t"><b>Dynasty</b> &middot; Decision Intelligence</div>
     <div class="spot">SB 2610 &middot; Spotlight</div>
   </div>
   <div class="card">
-    <div class="progress-top">
-      <span class="step" id="stepLabel">Question 1 of 10</span>
-      <span class="tag" id="qtag">Scope</span>
+    <div class="q-meta">
+      <span class="q-counter" id="questionCounter">Question 1 of 10</span>
+      <span class="q-axis" id="questionAxis">Dimension: Scope</span>
     </div>
-    <div class="qbar"><i id="barFill"></i></div>
-    <p class="qtext" id="qtext"></p>
-    <div class="choices" id="choices"></div>
-    <div class="nav">
-      <button class="btn b2" id="backBtn">Back</button>
-      <button class="btn b1" id="nextBtn" disabled>Next</button>
+    <h2 class="q-title" id="questionTitle"></h2>
+    <p class="q-helper" id="questionHelper"></p>
+    <div class="answer-list" id="answerList"></div>
+    <div class="q-nav">
+      <button type="button" class="btn b2" id="backBtn">Back</button>
     </div>
   </div>
-</div>
+  <p class="foot" style="border:0;text-align:center">Not legal advice and no guarantee of safe harbor.</p>
+</section>
 
-<!-- ============ SCREEN 3: SAFE HARBOR BRIEF (RESULTS) ============ -->
-<div id="screen-result" class="wrap hidden">
+<!-- ============ RESULTS ============ -->
+<section id="resultsScreen" class="wrap" hidden>
   <div class="card">
     <div class="k">Your DIM Result</div>
     <h1>Your Safe Harbor Brief is ready.</h1>
-    <p class="lead" id="briefLead">You run a Texas business under 250 employees holding sensitive personal information, so SB 2610 covers you.</p>
-    <div><span class="pill">_SCOPE</span><span class="pill">_STANDARD</span><span class="pill">_SAFEGUARDS</span><span class="pill">_SUBSTANTIATION</span><span class="pill">_SUSTAINED</span></div>
-    <div class="btns"><button class="btn b1" id="continueBtn">Continue</button><button class="btn b2" id="askBtn">Ask David to review</button></div>
+    <div style="display:flex;align-items:flex-end;gap:18px;margin:14px 0 6px">
+      <div><div class="score-big" id="overallScore">0</div><div class="score-cap">DIM Score</div></div>
+      <div class="band" id="overallBand">&mdash;</div>
+    </div>
+    <p class="lead" id="overallSummary"></p>
+    <div style="margin-top:8px"><span class="pill">_SCOPE</span><span class="pill">_STANDARD</span><span class="pill">_SAFEGUARDS</span><span class="pill">_SUBSTANTIATION</span><span class="pill">_SUSTAINED</span></div>
+    <div class="btns">
+      <button type="button" class="btn b1">Ask David to review</button>
+      <button type="button" class="btn b2" data-action="restart">Retake</button>
+    </div>
   </div>
 
   <div class="card">
     <div class="k">Your SB 2610 Score</div>
     <div class="radar">
-      <svg width="330" height="300" viewBox="0 0 330 300">
-        <g fill="none" stroke="#1f3a2e">
-          <polygon points="165,40 285,128 239,268 91,268 45,128"/>
-          <polygon points="165,90 235,141 208,225 122,225 95,141"/>
+      <svg width="320" height="300" viewBox="-25 0 370 300">
+        <g fill="none" stroke="#1f3a2e" stroke-width="1">
+          <polygon points="150,40 254.6,115.9 214.7,238.1 85.3,238.1 45.4,115.9"/>
+          <polygon points="150,95 202.3,132.9 182.3,194.1 117.7,194.1 97.7,132.9"/>
         </g>
-        <polygon id="radarPoly" points="165,55 250,132 232,255 108,240 70,135" fill="rgba(63,191,135,.22)" stroke="#3fbf87" stroke-width="2"/>
-        <g fill="#8ea89a" font-size="11" font-weight="600" text-anchor="middle">
-          <text x="165" y="28">_SCOPE</text>
-          <text x="300" y="132">_STANDARD</text>
-          <text x="250" y="288">_SAFEGUARDS</text>
-          <text x="80" y="288">_SUBSTANTIATION</text>
-          <text x="28" y="132">_SUSTAINED</text>
+        <g stroke="#1f3a2e" stroke-width="1">
+          <line x1="150" y1="150" x2="150" y2="40"/>
+          <line x1="150" y1="150" x2="254.6" y2="115.9"/>
+          <line x1="150" y1="150" x2="214.7" y2="238.1"/>
+          <line x1="150" y1="150" x2="85.3" y2="238.1"/>
+          <line x1="150" y1="150" x2="45.4" y2="115.9"/>
+        </g>
+        <polygon id="radarPolygon" points="150,150 150,150 150,150 150,150 150,150" fill="rgba(63,191,135,.22)" stroke="#3fbf87" stroke-width="2"/>
+        <g fill="#b9cfc3" font-size="11" font-weight="600" text-anchor="middle">
+          <text x="150" y="28">SCOPE</text>
+          <text x="290" y="112">STANDARD</text>
+          <text x="236" y="258">SAFEGUARDS</text>
+          <text x="64" y="258">SUBSTANTIATION</text>
+          <text x="10" y="112">SUSTAINED</text>
         </g>
       </svg>
     </div>
-    <div class="grid4">
-      <div class="mini"><div class="kk">_Standing</div><div class="num" id="mStanding">78/100</div><p>Solid &mdash; Texas, under 250, sensitive data.</p></div>
-      <div class="mini"><div class="kk">_Shield Reality</div><div class="num" id="mShield">72/100</div><p>How well your written program would hold up.</p></div>
-      <div class="mini"><div class="kk">_Runway</div><div class="num" id="mRunway">63/100</div><p>Proof and update cadence.</p></div>
-      <div class="mini gold"><div class="kk">_Signal Reading</div><div class="num" id="mSignal">Exposed 63</div><p id="mSignalNote">Exposure active &mdash; pause, listen, decide with logic.</p></div>
+    <div style="margin-top:6px">
+      <div class="axis"><span>_Scope &mdash; what is covered</span><b id="axisScoreScope">0</b></div><div class="bar"><i id="axisBarScope"></i></div>
+      <div class="axis"><span>_Standard &mdash; what rules apply</span><b id="axisScoreStandard">0</b></div><div class="bar"><i id="axisBarStandard"></i></div>
+      <div class="axis"><span>_Safeguards &mdash; what controls exist</span><b id="axisScoreSafeguards">0</b></div><div class="bar"><i id="axisBarSafeguards"></i></div>
+      <div class="axis"><span>_Substantiation &mdash; what evidence exists</span><b id="axisScoreSubstantiation">0</b></div><div class="bar"><i id="axisBarSubstantiation"></i></div>
+      <div class="axis"><span>_Sustained &mdash; how well it holds over time</span><b id="axisScoreSustained">0</b></div><div class="bar"><i id="axisBarSustained"></i></div>
     </div>
   </div>
 
   <div class="card full">
     <div class="k">What Your DIM Means</div>
-    <h1 style="font-size:20px">The five _S axes, tuned to the law</h1>
-    <div style="margin-top:12px">
-      <div class="axis"><span>_Scope &mdash; Texas + sub-250 + covered PII</span><b id="vScope">90</b></div><div class="bar"><i id="barScope"></i></div>
-      <div class="axis"><span>_Standard &mdash; framework match by size tier</span><b id="vStandard">72</b></div><div class="bar"><i id="barStandard"></i></div>
-      <div class="axis"><span>_Safeguards &mdash; admin + technical + physical</span><b id="vSafeguards">81</b></div><div class="bar"><i id="barSafeguards"></i></div>
-      <div class="axis"><span>_Substantiation &mdash; documented, dated, versioned</span><b id="vSubstantiation">54</b></div><div class="bar"><i id="barSubstantiation"></i></div>
-      <div class="axis"><span>_Sustained &mdash; current with framework revisions</span><b id="vSustained">60</b></div><div class="bar"><i id="barSustained"></i></div>
+    <div class="brief-grid">
+      <div>
+        <h3 class="subhead" style="color:var(--grn)">Your strongest ground</h3>
+        <div id="strengthsList"></div>
+      </div>
+      <div>
+        <h3 class="subhead" style="color:var(--gold)">Your biggest priorities</h3>
+        <div id="prioritiesList"></div>
+      </div>
     </div>
     <p class="foot">Readiness estimate only. Not legal advice and no guarantee of safe harbor. Actual damages, fines, and other remedies may still apply. Model v1.0 &middot; C-confidence until artifacts verified.</p>
   </div>
-</div>
+</section>
 
 <script>
-(function(){
-  "use strict";
+(() => {
+  const DIM_MODEL = {
+    axes: {
+      scope: {
+        label: "Scope",
+        short: "What is covered",
+        resultLow: "Scope is narrow or inconsistently defined.",
+        resultMid: "Scope is partially defined but may leave gray areas.",
+        resultHigh: "Scope is clearly defined across covered scenarios, actors, and data."
+      },
+      standard: {
+        label: "Standard",
+        short: "What rules apply",
+        resultLow: "The governing standard is not clearly mapped or adopted.",
+        resultMid: "The governing standard is present but unevenly operationalized.",
+        resultHigh: "The governing standard is clearly mapped, documented, and adopted."
+      },
+      safeguards: {
+        label: "Safeguards",
+        short: "What controls exist",
+        resultLow: "Safeguards are weak, reactive, or incomplete.",
+        resultMid: "Safeguards exist but are not yet layered and dependable.",
+        resultHigh: "Safeguards are layered, documented, and operational."
+      },
+      substantiation: {
+        label: "Substantiation",
+        short: "What evidence exists",
+        resultLow: "Evidence and rationale would be hard to defend under scrutiny.",
+        resultMid: "Some support exists, but retrieval and consistency are limited.",
+        resultHigh: "Evidence, rationale, and supporting records are organized and defensible."
+      },
+      sustained: {
+        label: "Sustained",
+        short: "How well it holds over time",
+        resultLow: "The model depends too much on individuals and crisis response.",
+        resultMid: "The model is somewhat maintained but not fully institutionalized.",
+        resultHigh: "The model is reviewed, trained, and sustained over time."
+      }
+    },
 
-  // ---- 10 questions, each tagged to one of the five _S axes ----
-  // weight: contribution of a "yes/best" answer toward that axis (0..1 of the option value)
-  var QUESTIONS = [
-    { axis:"Scope", tag:"Scope",
-      q:"Is your business based in Texas (or do you handle the personal data of Texas residents)?",
-      opts:[["Yes — Texas business / Texas residents' data",1],["Partly / not sure",0.5],["No",0]] },
-    { axis:"Scope", tag:"Scope",
-      q:"How many employees does your business have?",
-      opts:[["Fewer than 20",1],["20–99",1],["100–249",0.9],["250 or more",0.4]] },
-    { axis:"Scope", tag:"Scope",
-      q:"Do you collect or store sensitive or personal information (SSNs, health, financial, customer PII)?",
-      opts:[["Yes — clearly sensitive PII",1],["Some low-sensitivity data",0.5],["No personal data at all",0.1]] },
-    { axis:"Standard", tag:"Standard",
-      q:"Have you adopted a recognized cybersecurity framework (NIST, CIS Controls, ISO 27001, etc.)?",
-      opts:[["Yes — a named framework, matched to our size",1],["Informal / homegrown controls only",0.45],["No framework",0]] },
-    { axis:"Standard", tag:"Standard",
-      q:"Is that framework scaled to your size tier (right-sized, not copy-pasted)?",
-      opts:[["Yes — deliberately right-sized",1],["Roughly, not formally scaled",0.5],["No / N/A",0.1]] },
-    { axis:"Safeguards", tag:"Safeguards",
-      q:"Do you have administrative, technical, AND physical safeguards in place?",
-      opts:[["All three, actively in use",1],["One or two of the three",0.5],["None in place",0]] },
-    { axis:"Safeguards", tag:"Safeguards",
-      q:"Are core technical controls live today (MFA, encryption, access control, backups)?",
-      opts:[["Yes — all core controls live",1],["Some, partially deployed",0.5],["No / minimal",0.1]] },
-    { axis:"Substantiation", tag:"Substantiation",
-      q:"Is your program written down — documented, dated, and version-controlled?",
-      opts:[["Yes — documented, dated, versioned",1],["Some documentation, not dated/versioned",0.4],["Nothing written",0]] },
-    { axis:"Substantiation", tag:"Substantiation",
-      q:"Could you PROVE the program existed and was current on a specific past date?",
-      opts:[["Yes — we can show dated evidence",1],["Maybe, with effort",0.4],["No — no verifiable trail",0]] },
-    { axis:"Sustained", tag:"Sustained",
-      q:"Do you review and update the program on a regular cadence as frameworks revise?",
-      opts:[["Yes — scheduled reviews, kept current",1],["Occasionally / ad hoc",0.45],["Never reviewed after setup",0]] }
-  ];
+    answers: [
+      { value: 0, label: "Not in place" },
+      { value: 25, label: "Minimally in place" },
+      { value: 50, label: "Partially in place" },
+      { value: 75, label: "Mostly in place" },
+      { value: 100, label: "Fully in place" }
+    ],
 
-  var AXES = ["Scope","Standard","Safeguards","Substantiation","Sustained"];
-  var answers = new Array(QUESTIONS.length).fill(null); // stores chosen option value 0..1
-  var idx = 0;
+    questions: [
+      {
+        id: "q1",
+        axis: "scope",
+        title: "How clearly have you defined which breach scenarios and data types are covered by your SB 2610 Safe Harbor process?",
+        helper: "This tests whether the boundaries of the model are explicit rather than implied."
+      },
+      {
+        id: "q2",
+        axis: "scope",
+        title: "When a potential breach occurs, how clear are the roles and boundaries for who owns decision-making and notification?",
+        helper: "This tests whether ownership and accountability are defined at the point of action."
+      },
+      {
+        id: "q3",
+        axis: "standard",
+        title: "To what extent have you mapped your breach response standard directly to SB 2610 and related requirements?",
+        helper: "This tests whether the model is anchored to an explicit standard."
+      },
+      {
+        id: "q4",
+        axis: "standard",
+        title: "How thoroughly are your Safe Harbor standards adopted across policy, playbooks, and training?",
+        helper: "This tests whether the standard is operational, not just written down."
+      },
+      {
+        id: "q5",
+        axis: "safeguards",
+        title: "How strong are your preventive safeguards for reducing the chance that a reportable breach occurs at all?",
+        helper: "This tests the maturity of the controls environment."
+      },
+      {
+        id: "q6",
+        axis: "safeguards",
+        title: "When something looks like a breach, how mature is your response playbook from detection through Safe Harbor determination?",
+        helper: "This tests whether response controls are documented, timed, and repeatable."
+      },
+      {
+        id: "q7",
+        axis: "substantiation",
+        title: "How consistently do you capture evidence, notes, and artifacts to support your Safe Harbor determinations?",
+        helper: "This tests whether decisions are supported by retrievable proof."
+      },
+      {
+        id: "q8",
+        axis: "substantiation",
+        title: "If challenged, how ready are you to show the reasoning path behind a Safe Harbor decision?",
+        helper: "This tests whether your rationale is explainable and defensible."
+      },
+      {
+        id: "q9",
+        axis: "sustained",
+        title: "How often do you formally review and update your Safe Harbor criteria, playbooks, and controls?",
+        helper: "This tests whether the model stays current over time."
+      },
+      {
+        id: "q10",
+        axis: "sustained",
+        title: "How consistently do you train and drill the people involved in a Safe Harbor breach decision?",
+        helper: "This tests whether readiness is maintained, not assumed."
+      }
+    ],
 
-  // ---- element refs ----
-  var elIntro   = document.getElementById("screen-intro");
-  var elQ       = document.getElementById("screen-q");
-  var elResult  = document.getElementById("screen-result");
-  var startBtn  = document.getElementById("startBtn");
-  var backBtn   = document.getElementById("backBtn");
-  var nextBtn   = document.getElementById("nextBtn");
-  var stepLabel = document.getElementById("stepLabel");
-  var qtag      = document.getElementById("qtag");
-  var barFill   = document.getElementById("barFill");
-  var qtext     = document.getElementById("qtext");
-  var choices   = document.getElementById("choices");
-
-  function show(el){ elIntro.classList.add("hidden"); elQ.classList.add("hidden"); elResult.classList.add("hidden"); el.classList.remove("hidden"); window.scrollTo(0,0); }
-
-  function renderQuestion(){
-    var Q = QUESTIONS[idx];
-    stepLabel.textContent = "Question " + (idx+1) + " of " + QUESTIONS.length;
-    qtag.textContent = Q.tag;
-    barFill.style.width = ((idx)/QUESTIONS.length*100) + "%";
-    qtext.textContent = Q.q;
-    choices.innerHTML = "";
-    Q.opts.forEach(function(opt, i){
-      var d = document.createElement("div");
-      d.className = "choice" + (answers[idx] !== null && answers[idx].i === i ? " sel" : "");
-      d.innerHTML = '<span class="dot"></span><span>' + opt[0] + '</span>';
-      d.addEventListener("click", function(){
-        answers[idx] = { i:i, v:opt[1] };
-        // repaint selection
-        Array.prototype.forEach.call(choices.children, function(c){ c.classList.remove("sel"); });
-        d.classList.add("sel");
-        nextBtn.disabled = false;
-      });
-      choices.appendChild(d);
-    });
-    backBtn.disabled = (idx === 0);
-    nextBtn.disabled = (answers[idx] === null);
-    nextBtn.textContent = (idx === QUESTIONS.length - 1) ? "See my Safe Harbor Brief" : "Next";
-  }
-
-  function computeScores(){
-    var sum = {}, cnt = {};
-    AXES.forEach(function(a){ sum[a]=0; cnt[a]=0; });
-    QUESTIONS.forEach(function(Q, i){
-      var v = answers[i] ? answers[i].v : 0;
-      sum[Q.axis] += v; cnt[Q.axis] += 1;
-    });
-    var out = {};
-    AXES.forEach(function(a){ out[a] = Math.round((cnt[a] ? sum[a]/cnt[a] : 0) * 100); });
-    return out;
-  }
-
-  // radar geometry: base pentagon vertices (matching the SVG label positions), center ~ (165,150)
-  var CENTER = {x:165, y:150};
-  var VERT = { // unit direction from center to each axis's outer point (from the outer guide polygon)
-    Scope:          {x:165, y:40},
-    Standard:       {x:285, y:128},
-    Safeguards:     {x:239, y:268},
-    Substantiation: {x:91,  y:268},
-    Sustained:      {x:45,  y:128}
+    bands: [
+      {
+        min: 0,
+        max: 24,
+        label: "At Risk",
+        summary: "The current posture is unlikely to support a confident Safe Harbor position."
+      },
+      {
+        min: 25,
+        max: 49,
+        label: "Emerging",
+        summary: "Some elements exist, but material gaps remain across one or more core dimensions."
+      },
+      {
+        min: 50,
+        max: 74,
+        label: "Developing",
+        summary: "The posture shows structure, but consistency and evidence still need strengthening."
+      },
+      {
+        min: 75,
+        max: 89,
+        label: "Established",
+        summary: "The posture is materially structured, documented, and more readily defensible."
+      },
+      {
+        min: 90,
+        max: 100,
+        label: "Defensible",
+        summary: "The posture appears highly structured, evidenced, and sustained across the five dimensions."
+      }
+    ]
   };
 
-  function radarPoints(scores){
-    return AXES.map(function(a){
-      var t = Math.max(0.08, scores[a]/100); // fraction along the axis
-      var x = CENTER.x + (VERT[a].x - CENTER.x) * t;
-      var y = CENTER.y + (VERT[a].y - CENTER.y) * t;
-      return x.toFixed(0) + "," + y.toFixed(0);
+  const state = {
+    step: -1,
+    responses: {}
+  };
+
+  const el = {
+    intro: document.getElementById("introScreen"),
+    questions: document.getElementById("questionScreen"),
+    results: document.getElementById("resultsScreen"),
+    startBtn: document.getElementById("startBtn"),
+    backBtn: document.getElementById("backBtn"),
+    restartBtns: document.querySelectorAll("[data-action='restart']"),
+
+    questionCounter: document.getElementById("questionCounter"),
+    questionAxis: document.getElementById("questionAxis"),
+    questionTitle: document.getElementById("questionTitle"),
+    questionHelper: document.getElementById("questionHelper"),
+    answerList: document.getElementById("answerList"),
+
+    overallScore: document.getElementById("overallScore"),
+    overallBand: document.getElementById("overallBand"),
+    overallSummary: document.getElementById("overallSummary"),
+    strengthsList: document.getElementById("strengthsList"),
+    prioritiesList: document.getElementById("prioritiesList"),
+
+    axisScoreScope: document.getElementById("axisScoreScope"),
+    axisScoreStandard: document.getElementById("axisScoreStandard"),
+    axisScoreSafeguards: document.getElementById("axisScoreSafeguards"),
+    axisScoreSubstantiation: document.getElementById("axisScoreSubstantiation"),
+    axisScoreSustained: document.getElementById("axisScoreSustained"),
+
+    axisBarScope: document.getElementById("axisBarScope"),
+    axisBarStandard: document.getElementById("axisBarStandard"),
+    axisBarSafeguards: document.getElementById("axisBarSafeguards"),
+    axisBarSubstantiation: document.getElementById("axisBarSubstantiation"),
+    axisBarSustained: document.getElementById("axisBarSustained"),
+
+    radarPolygon: document.getElementById("radarPolygon")
+  };
+
+  function showScreen(name) {
+    const map = { intro: el.intro, questions: el.questions, results: el.results };
+    Object.entries(map).forEach(([key, node]) => {
+      if (!node) return;
+      node.hidden = key !== name;
+    });
+  }
+
+  function startAssessment() {
+    state.step = 0;
+    state.responses = {};
+    showScreen("questions");
+    renderQuestion();
+  }
+
+  function restartAssessment() {
+    state.step = -1;
+    state.responses = {};
+    showScreen("intro");
+  }
+
+  function renderQuestion() {
+    const q = DIM_MODEL.questions[state.step];
+    const axis = DIM_MODEL.axes[q.axis];
+
+    if (el.questionCounter) {
+      el.questionCounter.textContent = `Question ${state.step + 1} of ${DIM_MODEL.questions.length}`;
+    }
+    if (el.questionAxis) {
+      el.questionAxis.textContent = `Dimension: ${axis.label}`;
+    }
+    if (el.questionTitle) {
+      el.questionTitle.textContent = q.title;
+    }
+    if (el.questionHelper) {
+      el.questionHelper.textContent = q.helper;
+    }
+
+    if (el.answerList) {
+      el.answerList.innerHTML = DIM_MODEL.answers.map(answer => {
+        const active = state.responses[q.id] === answer.value ? " is-selected" : "";
+        return `
+          <button type="button" class="answer-btn${active}" data-question="${q.id}" data-value="${answer.value}">
+            <span class="answer-btn__label">${answer.label}</span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    if (el.backBtn) {
+      el.backBtn.disabled = state.step === 0;
+    }
+  }
+
+  function answerCurrent(value) {
+    const q = DIM_MODEL.questions[state.step];
+    state.responses[q.id] = Number(value);
+
+    if (state.step < DIM_MODEL.questions.length - 1) {
+      state.step += 1;
+      renderQuestion();
+    } else {
+      renderResults();
+    }
+  }
+
+  function goBack() {
+    if (state.step <= 0) return;
+    state.step -= 1;
+    renderQuestion();
+  }
+
+  function calculateScores() {
+    const axisBuckets = Object.keys(DIM_MODEL.axes).reduce((acc, key) => {
+      acc[key] = [];
+      return acc;
+    }, {});
+
+    DIM_MODEL.questions.forEach(q => {
+      axisBuckets[q.axis].push(Number(state.responses[q.id] ?? 0));
+    });
+
+    const axisScores = Object.fromEntries(
+      Object.entries(axisBuckets).map(([axis, values]) => {
+        const avg = values.length
+          ? Math.round(values.reduce((sum, val) => sum + val, 0) / values.length)
+          : 0;
+        return [axis, avg];
+      })
+    );
+
+    const overall = Math.round(
+      Object.values(axisScores).reduce((sum, val) => sum + val, 0) /
+      Object.keys(axisScores).length
+    );
+
+    const band = DIM_MODEL.bands.find(b => overall >= b.min && overall <= b.max) || DIM_MODEL.bands[0];
+
+    return { axisScores, overall, band };
+  }
+
+  function getAxisNarrative(axisKey, score) {
+    const axis = DIM_MODEL.axes[axisKey];
+    if (score < 40) return axis.resultLow;
+    if (score < 75) return axis.resultMid;
+    return axis.resultHigh;
+  }
+
+  function buildBrief(scores) {
+    const { axisScores, overall, band } = scores;
+
+    const strengths = Object.entries(axisScores)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 2)
+      .map(([key, score]) => ({
+        key,
+        label: DIM_MODEL.axes[key].label,
+        score,
+        narrative: getAxisNarrative(key, score)
+      }));
+
+    const priorities = Object.entries(axisScores)
+      .sort((a, b) => a[1] - b[1])
+      .slice(0, 2)
+      .map(([key, score]) => ({
+        key,
+        label: DIM_MODEL.axes[key].label,
+        score,
+        narrative: getAxisNarrative(key, score)
+      }));
+
+    return {
+      headline: `${overall}`,
+      bandLabel: band.label,
+      summary: band.summary,
+      strengths,
+      priorities
+    };
+  }
+
+  function setAxisUI(axisKey, score) {
+    const scoreNodeMap = {
+      scope: el.axisScoreScope,
+      standard: el.axisScoreStandard,
+      safeguards: el.axisScoreSafeguards,
+      substantiation: el.axisScoreSubstantiation,
+      sustained: el.axisScoreSustained
+    };
+
+    const barNodeMap = {
+      scope: el.axisBarScope,
+      standard: el.axisBarStandard,
+      safeguards: el.axisBarSafeguards,
+      substantiation: el.axisBarSubstantiation,
+      sustained: el.axisBarSustained
+    };
+
+    const scoreNode = scoreNodeMap[axisKey];
+    const barNode = barNodeMap[axisKey];
+
+    if (scoreNode) scoreNode.textContent = score;
+    if (barNode) barNode.style.width = `${score}%`;
+  }
+
+  function buildRadarPoints(axisScores) {
+    const order = ["scope", "standard", "safeguards", "substantiation", "sustained"];
+    const cx = 150;
+    const cy = 150;
+    const radius = 110;
+
+    return order.map((axisKey, index) => {
+      const angle = (-90 + index * 72) * (Math.PI / 180);
+      const r = radius * (axisScores[axisKey] / 100);
+      const x = cx + Math.cos(angle) * r;
+      const y = cy + Math.sin(angle) * r;
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
     }).join(" ");
   }
 
-  function renderResults(){
-    var s = computeScores();
-
-    // per-axis bars + values
-    var map = {Scope:"Scope",Standard:"Standard",Safeguards:"Safeguards",Substantiation:"Substantiation",Sustained:"Sustained"};
-    Object.keys(map).forEach(function(a){
-      document.getElementById("v"+a).textContent = s[a];
-      document.getElementById("bar"+a).style.width = s[a] + "%";
-    });
-
-    // radar polygon
-    document.getElementById("radarPoly").setAttribute("points", radarPoints(s));
-
-    // composite mini-cards
-    var standing = s.Scope; // covered-ness
-    var shield   = Math.round((s.Standard + s.Safeguards)/2);
-    var runway   = Math.round((s.Substantiation + s.Sustained)/2);
-    var overall  = Math.round((s.Scope + s.Standard + s.Safeguards + s.Substantiation + s.Sustained)/5);
-
-    document.getElementById("mStanding").textContent = standing + "/100";
-    document.getElementById("mShield").textContent   = shield + "/100";
-    document.getElementById("mRunway").textContent   = runway + "/100";
-
-    var signalWord = overall >= 75 ? "Defensible" : (overall >= 55 ? "Exposed" : "At Risk");
-    document.getElementById("mSignal").textContent = signalWord + " " + overall;
-    document.getElementById("mSignalNote").textContent =
-      overall >= 75 ? "Strong footing — keep the proof trail current." :
-      overall >= 55 ? "Exposure active — pause, listen, decide with logic." :
-                      "High exposure — close documentation gaps first.";
-
-    // weakest + strongest axis for the lead line
-    var sortedAsc = AXES.slice().sort(function(a,b){ return s[a]-s[b]; });
-    var weakest = sortedAsc[0], strongest = sortedAsc[sortedAsc.length-1];
-    document.getElementById("briefLead").innerHTML =
-      "You run a Texas business under 250 employees holding sensitive personal information, so SB 2610 covers you. " +
-      "Your strongest ground is your <b style=\"color:var(--grn)\">" + strongest + "</b>; your biggest exposure is <b style=\"color:var(--gold)\">" + weakest +
-      "</b> &mdash; the gap to close before a breach. Recommended path: framework match for your size tier, as soon as possible.";
-
-    show(elResult);
+  function renderList(node, items) {
+    if (!node) return;
+    node.innerHTML = items.map(item => `
+      <div class="brief-card">
+        <div class="brief-card__top">
+          <span class="brief-card__label">${item.label}</span>
+          <span class="brief-card__score">${item.score}</span>
+        </div>
+        <p class="brief-card__body">${item.narrative}</p>
+      </div>
+    `).join("");
   }
 
-  // ---- wiring ----
-  startBtn.addEventListener("click", function(){ idx = 0; show(elQ); renderQuestion(); });
-  backBtn.addEventListener("click", function(){ if(idx>0){ idx--; renderQuestion(); } });
-  nextBtn.addEventListener("click", function(){
-    if(answers[idx] === null) return;
-    if(idx < QUESTIONS.length - 1){ idx++; renderQuestion(); }
-    else { renderResults(); }
+  function renderResults() {
+    const scores = calculateScores();
+    const brief = buildBrief(scores);
+
+    Object.entries(scores.axisScores).forEach(([axisKey, score]) => {
+      setAxisUI(axisKey, score);
+    });
+
+    if (el.overallScore) el.overallScore.textContent = brief.headline;
+    if (el.overallBand) el.overallBand.textContent = brief.bandLabel;
+    if (el.overallSummary) el.overallSummary.textContent = brief.summary;
+
+    renderList(el.strengthsList, brief.strengths);
+    renderList(el.prioritiesList, brief.priorities);
+
+    if (el.radarPolygon) {
+      el.radarPolygon.setAttribute("points", buildRadarPoints(scores.axisScores));
+    }
+
+    showScreen("results");
+  }
+
+  document.addEventListener("click", (event) => {
+    const answerBtn = event.target.closest(".answer-btn");
+    if (answerBtn) {
+      answerCurrent(answerBtn.dataset.value);
+      return;
+    }
+
+    if (event.target.closest("#startBtn")) {
+      startAssessment();
+      return;
+    }
+
+    if (event.target.closest("#backBtn")) {
+      goBack();
+      return;
+    }
+
+    const restartBtn = event.target.closest("[data-action='restart']");
+    if (restartBtn) {
+      restartAssessment();
+    }
   });
 
-  document.getElementById("continueBtn").addEventListener("click", function(){
-    alert("Your Safe Harbor Brief has been captured. David will follow up to review your artifacts.");
-  });
-  document.getElementById("askBtn").addEventListener("click", function(){
-    alert("Request sent — David will review your SB 2610 results and reach out.");
-  });
-  document.getElementById("continueBtn").id = "continueBtn";
-
-  // retake helper: clicking the score header is not exposed; results screen is terminal per spec
+  restartAssessment();
 })();
 </script>
 </body>
