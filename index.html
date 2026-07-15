@@ -602,8 +602,16 @@ p.lead{color:var(--mut);font-size:15px}
       setAxisUI(axisKey, score);
     });
 
-    if (el.overallScore) el.overallScore.textContent = brief.headline;
-    if (el.overallBand) el.overallBand.textContent = brief.bandLabel;
+    const belowThreshold = scores.overall < 70;
+    if (el.overallScore) {
+      el.overallScore.textContent = brief.headline;
+      el.overallScore.style.color = belowThreshold ? "var(--bad)" : "var(--grn)";
+    }
+    if (el.overallBand) {
+      el.overallBand.textContent = brief.bandLabel;
+      el.overallBand.style.color = belowThreshold ? "var(--bad)" : "var(--gold)";
+      el.overallBand.style.borderColor = belowThreshold ? "var(--bad)" : "#554311";
+    }
     if (el.overallSummary) el.overallSummary.textContent = brief.summary;
 
     renderList(el.strengthsList, brief.strengths);
