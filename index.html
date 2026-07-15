@@ -70,6 +70,8 @@ p.lead{color:var(--mut);font-size:15px}
 .brief-card__body{color:var(--mut);font-size:13px;margin:0}
 .subhead{font-size:13px;font-weight:700;color:var(--tx);margin:0 0 4px}
 .foot{color:var(--mut);font-size:11.5px;margin-top:16px;border-top:1px solid var(--ln);padding-top:12px}
+.legal{color:var(--mut);opacity:.85;font-size:10.5px;line-height:1.5;text-align:center;margin:10px 0 4px;letter-spacing:.02em}
+@media print{body{background:#fff;color:#000}.legal{color:#000;opacity:1;border-top:1px solid #ccc;padding-top:8px}.btns,.q-nav{display:none}}
 @media(max-width:720px){.wrap{grid-template-columns:1fr}.full{grid-column:1}.brief-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -80,7 +82,7 @@ p.lead{color:var(--mut);font-size:15px}
   <div class="brand">
     <div class="mark">D</div>
     <div class="t"><b>Dynasty</b> &middot; Decision Intelligence</div>
-    <div class="spot">SB 2610 &middot; Spotlight</div>
+    <div class="spot">GRC Lane &middot; Governance, Risk &amp; Compliance</div>
   </div>
   <div class="card">
     <div class="k">Texas SB 2610 &middot; Safe Harbor Readiness</div>
@@ -90,6 +92,7 @@ p.lead{color:var(--mut);font-size:15px}
     <button type="button" class="btn b1 btnfull" id="startBtn">Start &mdash; takes about 3 minutes</button>
   </div>
   <p class="foot" style="border:0;text-align:center">Readiness estimate only. Not legal advice and no guarantee of safe harbor. Actual damages, fines, and other remedies may still apply.</p>
+  <p class="legal">&copy; <span class="yr">2026</span> Dynasty Holdings, LLC. Dynasty Stack&trade; and Dynasty Plays&trade; are marks of Dynasty Holdings. All rights reserved. Confidential &mdash; provided for the recipient&rsquo;s internal use only.</p>
 </section>
 
 <!-- ============ QUESTIONS ============ -->
@@ -97,7 +100,7 @@ p.lead{color:var(--mut);font-size:15px}
   <div class="brand">
     <div class="mark">D</div>
     <div class="t"><b>Dynasty</b> &middot; Decision Intelligence</div>
-    <div class="spot">SB 2610 &middot; Spotlight</div>
+    <div class="spot">GRC Lane &middot; Governance, Risk &amp; Compliance</div>
   </div>
   <div class="card">
     <div class="q-meta">
@@ -112,10 +115,16 @@ p.lead{color:var(--mut);font-size:15px}
     </div>
   </div>
   <p class="foot" style="border:0;text-align:center">Not legal advice and no guarantee of safe harbor.</p>
+  <p class="legal">&copy; <span class="yr">2026</span> Dynasty Holdings, LLC. Dynasty Stack&trade; and Dynasty Plays&trade; are marks of Dynasty Holdings. All rights reserved. Confidential &mdash; provided for the recipient&rsquo;s internal use only.</p>
 </section>
 
 <!-- ============ RESULTS ============ -->
 <section id="resultsScreen" class="wrap" hidden>
+  <div class="brand" style="grid-column:1/-1">
+    <div class="mark">D</div>
+    <div class="t"><b>Dynasty</b> &middot; Decision Intelligence</div>
+    <div class="spot">GRC Lane &middot; Governance, Risk &amp; Compliance</div>
+  </div>
   <div class="card">
     <div class="k">Your DIM Result</div>
     <h1>Your Safe Harbor Brief is ready.</h1>
@@ -179,10 +188,12 @@ p.lead{color:var(--mut);font-size:15px}
     </div>
     <p class="foot">Readiness estimate only. Not legal advice and no guarantee of safe harbor. Actual damages, fines, and other remedies may still apply. Model v1.0 &middot; C-confidence until artifacts verified.</p>
   </div>
+  <p class="legal" style="grid-column:1/-1">&copy; <span class="yr">2026</span> Dynasty Holdings, LLC. Dynasty Stack&trade; and Dynasty Plays&trade; are marks of Dynasty Holdings. All rights reserved. Confidential &mdash; provided for the recipient&rsquo;s internal use only.</p>
 </section>
 
 <script>
 (() => {
+  document.querySelectorAll(".yr").forEach(n => { n.textContent = new Date().getFullYear(); });
   const DIM_MODEL = {
     axes: {
       scope: {
