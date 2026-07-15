@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SB 2610 Safe Harbor DIM</title>
+<style>
+:root{--bg:#0c1512;--p1:#12201b;--p2:#172b23;--ln:#1f3a2e;--tx:#e9f2ec;--mut:#8ea89a;--grn:#3fbf87;--gold:#d9a441;--bad:#e0685f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1180px;margin:0 auto;padding:26px 22px 70px}
+.full{grid-column:1/3}
+.k{color:var(--gold);font:600 11px/1 system-ui;letter-spacing:1.5px;text-transform:uppercase}
+.card{background:var(--p1);border:1px solid var(--ln);border-radius:16px;padding:22px}
+h1{font-size:26px;margin:10px 0 8px}
+p.lead{color:var(--mut);font-size:15px}
+.pill{display:inline-block;background:var(--p2);border:1px solid var(--ln);color:var(--grn);border-radius:20px;padding:6px 12px;font:600 12px/1 system-ui;margin:6px 6px 0 0;letter-spacing:.5px}
+.btns{margin-top:16px}
+.btn{border:none;border-radius:11px;padding:12px 18px;font:600 14px/1 system-ui;cursor:pointer;margin-right:10px}
+.b1{background:var(--grn);color:#062015}
+.b2{background:transparent;color:var(--tx);border:1px solid var(--ln)}
+.radar{display:flex;justify-content:center;align-items:center}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mini{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:14px}
+.mini .kk{color:var(--mut);font:600 10px/1 system-ui;letter-spacing:1px;text-transform:uppercase}
+.mini .num{font-size:22px;font-weight:800;margin:6px 0 4px}
+.mini.gold{border-color:#554311}
+.mini.gold .num{color:var(--gold)}
+.mini p{color:var(--mut);font-size:12.5px}
+.axis{display:flex;justify-content:space-between;font-size:13px;margin:9px 0 3px}
+.bar{height:8px;background:#213a2f;border-radius:5px;overflow:hidden}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--grn),var(--gold))}
+.foot{color:var(--mut);font-size:11.5px;margin-top:14px;border-top:1px solid var(--ln);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+<div class="k">Your DIM Result</div>
+<h1>Your Safe Harbor Brief is ready.</h1>
+<p class="lead">You run a Texas business under 250 employees holding sensitive personal information, so SB 2610 covers you. Your strongest ground is your Safeguards; your biggest exposure is Substantiation &mdash; proving the program existed and was current before a breach. Recommended path: framework match for your size tier, as soon as possible.</p>
+<div><span class="pill">_SCOPE</span><span class="pill">_STANDARD</span><span class="pill">_SAFEGUARDS</span><span class="pill">_SUBSTANTIATION</span><span class="pill">_SUSTAINED</span></div>
+<div class="btns"><button class="btn b1">Continue</button><button class="btn b2">Ask David to review</button></div>
+</div>
+<div class="card">
+<div class="k">Your SB 2610 Score</div>
+<div class="radar">
+<svg width="330" height="300" viewBox="0 0 330 300">
+<g fill="none" stroke="#1f3a2e"><polygon points="165,40 285,128 239,268 91,268 45,128"/><polygon points="165,90 235,141 208,225 122,225 95,141"/></g>
+<polygon points="165,55 250,132 232,255 108,240 70,135" fill="rgba(63,191,135,.22)" stroke="#3fbf87" stroke-width="2"/>
+<g fill="#8ea89a" font-size="11" font-weight="600" text-anchor="middle"><text x="165" y="28">_SCOPE</text><text x="300" y="132">_STANDARD</text><text x="250" y="288">_SAFEGUARDS</text><text x="80" y="288">_SUBSTANTIATION</text><text x="28" y="132">_SUSTAINED</text></g>
+</svg>
+</div>
+<div class="grid4">
+<div class="mini"><div class="kk">_Standing</div><div class="num">78/100</div><p>Solid &mdash; Texas, under 250, sensitive data.</p></div>
+<div class="mini"><div class="kk">_Shield Reality</div><div class="num">72/100</div><p>How well your written program would hold up.</p></div>
+<div class="mini"><div class="kk">_Runway</div><div class="num">63/100</div><p>Mixed &mdash; proof and update cadence have gaps.</p></div>
+<div class="mini gold"><div class="kk">_Signal Reading</div><div class="num">Exposed 63</div><p>Exposure active &mdash; pause, listen, decide with logic.</p></div>
+</div>
+</div>
+<div class="card full">
+<div class="k">What Your DIM Means</div>
+<h1 style="font-size:20px">The five _S axes, tuned to the law</h1>
+<div style="margin-top:12px">
+<div class="axis"><span>_Scope &mdash; Texas + sub-250 + covered PII</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div>
+<div class="axis"><span>_Standard &mdash; framework match by size tier</span><b>72</b></div><div class="bar"><i style="width:72%"></i></div>
+<div class="axis"><span>_Safeguards &mdash; admin + technical + physical</span><b>81</b></div><div class="bar"><i style="width:81%"></i></div>
+<div class="axis"><span>_Substantiation &mdash; documented, dated, versioned</span><b>54</b></div><div class="bar"><i style="width:54%"></i></div>
+<div class="axis"><span>_Sustained &mdash; current with framework revisions</span><b>60</b></div><div class="bar"><i style="width:60%"></i></div>
+</div>
+<p class="foot">Readiness estimate only. Not legal advice and no guarantee of safe harbor. Actual damages, fines, and other remedies may still apply. Model v1.0 &middot; C-confidence until artifacts verified.</p>
+</div>
+</div>
+</body>
+</html>
