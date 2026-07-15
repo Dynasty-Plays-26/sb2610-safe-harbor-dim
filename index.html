@@ -19,6 +19,8 @@ p.lead{color:var(--mut);font-size:15px}
 .btn{border:none;border-radius:11px;padding:12px 18px;font:600 14px/1 system-ui;cursor:pointer;margin-right:10px}
 .b1{background:var(--grn);color:#062015}
 .b2{background:transparent;color:var(--tx);border:1px solid var(--ln)}
+.b1:hover{filter:brightness(1.07)}
+.b2:hover{background:var(--p2)}
 .radar{display:flex;justify-content:center;align-items:center}
 .grid4{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .mini{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:14px}
@@ -29,47 +31,302 @@ p.lead{color:var(--mut);font-size:15px}
 .mini p{color:var(--mut);font-size:12.5px}
 .axis{display:flex;justify-content:space-between;font-size:13px;margin:9px 0 3px}
 .bar{height:8px;background:#213a2f;border-radius:5px;overflow:hidden}
-.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--grn),var(--gold))}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--grn),var(--gold));width:0;transition:width .5s ease}
 .foot{color:var(--mut);font-size:11.5px;margin-top:14px;border-top:1px solid var(--ln);padding-top:12px}
+/* ---- intro + question flow (single-column, DIM-themed) ---- */
+.solo{max-width:660px;margin:0 auto;padding:34px 22px 70px}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.brand .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--grn),var(--gold));display:flex;align-items:center;justify-content:center;color:#062015;font-weight:800;font-size:15px}
+.brand .t{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.brand .t b{color:var(--tx);font-weight:700}
+.brand .spot{margin-left:auto;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid #554311;padding:4px 9px;border-radius:999px;background:rgba(217,164,65,.08)}
+.rule{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:14px 16px;color:var(--tx);font-size:14.5px;margin:14px 0 22px}
+.rule b{color:var(--gold)}
+.btnfull{width:100%;margin-right:0}
+.progress-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.progress-top .step{font-size:13px;color:var(--mut);letter-spacing:.04em}
+.tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid #554311;padding:4px 9px;border-radius:999px;background:rgba(217,164,65,.08)}
+.qbar{height:6px;background:#213a2f;border-radius:999px;overflow:hidden;margin-bottom:22px}
+.qbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--grn),var(--gold));width:0;transition:width .25s ease}
+.qtext{font-size:21px;font-weight:700;line-height:1.3;margin:0 0 18px}
+.choices{display:flex;flex-direction:column;gap:12px}
+.choice{text-align:left;cursor:pointer;background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:15px;color:var(--tx);font-size:15.5px;display:flex;align-items:center;gap:14px;transition:border-color .12s,background .12s}
+.choice:hover{border-color:var(--grn);background:#1c332a}
+.choice .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--ln);flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.choice.sel{border-color:var(--grn);background:#1c332a}
+.choice.sel .dot{border-color:var(--grn)}
+.choice.sel .dot::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--grn)}
+.nav{display:flex;gap:12px;margin-top:22px}
+.nav .btn{flex:1;margin-right:0}
+.hidden{display:none!important}
+@media(max-width:720px){.wrap{grid-template-columns:1fr}.full{grid-column:1}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="card">
-<div class="k">Your DIM Result</div>
-<h1>Your Safe Harbor Brief is ready.</h1>
-<p class="lead">You run a Texas business under 250 employees holding sensitive personal information, so SB 2610 covers you. Your strongest ground is your Safeguards; your biggest exposure is Substantiation &mdash; proving the program existed and was current before a breach. Recommended path: framework match for your size tier, as soon as possible.</p>
-<div><span class="pill">_SCOPE</span><span class="pill">_STANDARD</span><span class="pill">_SAFEGUARDS</span><span class="pill">_SUBSTANTIATION</span><span class="pill">_SUSTAINED</span></div>
-<div class="btns"><button class="btn b1">Continue</button><button class="btn b2">Ask David to review</button></div>
+
+<!-- ============ SCREEN 1: INTRO ============ -->
+<div id="screen-intro" class="solo">
+  <div class="brand">
+    <div class="mark">D</div>
+    <div class="t"><b>Dynasty</b> &middot; Decision Intelligence</div>
+    <div class="spot">SB 2610 &middot; Spotlight</div>
+  </div>
+  <div class="card">
+    <div class="k">Texas SB 2610 &middot; Safe Harbor Readiness</div>
+    <h1>Before we talk about a breach.</h1>
+    <p class="lead">Ten quick questions. No jargon. This maps how defensible your cybersecurity program is <b style="color:var(--tx)">today</b> under Texas SB 2610 &mdash; so if an incident ever hits, you can prove you did the right things.</p>
+    <div class="rule"><b>Documented beats good intentions.</b> The safe harbor protects owners who had a written, maintained program before the incident &mdash; not after. Let&rsquo;s find out where you stand.</div>
+    <button class="btn b1 btnfull" id="startBtn">Start &mdash; takes about 3 minutes</button>
+  </div>
+  <p class="foot" style="border:0;text-align:center">Readiness estimate only. Not legal advice and no guarantee of safe harbor. Actual damages, fines, and other remedies may still apply.</p>
 </div>
-<div class="card">
-<div class="k">Your SB 2610 Score</div>
-<div class="radar">
-<svg width="330" height="300" viewBox="0 0 330 300">
-<g fill="none" stroke="#1f3a2e"><polygon points="165,40 285,128 239,268 91,268 45,128"/><polygon points="165,90 235,141 208,225 122,225 95,141"/></g>
-<polygon points="165,55 250,132 232,255 108,240 70,135" fill="rgba(63,191,135,.22)" stroke="#3fbf87" stroke-width="2"/>
-<g fill="#8ea89a" font-size="11" font-weight="600" text-anchor="middle"><text x="165" y="28">_SCOPE</text><text x="300" y="132">_STANDARD</text><text x="250" y="288">_SAFEGUARDS</text><text x="80" y="288">_SUBSTANTIATION</text><text x="28" y="132">_SUSTAINED</text></g>
-</svg>
+
+<!-- ============ SCREEN 2: QUESTIONS ============ -->
+<div id="screen-q" class="solo hidden">
+  <div class="brand">
+    <div class="mark">D</div>
+    <div class="t"><b>Dynasty</b> &middot; Decision Intelligence</div>
+    <div class="spot">SB 2610 &middot; Spotlight</div>
+  </div>
+  <div class="card">
+    <div class="progress-top">
+      <span class="step" id="stepLabel">Question 1 of 10</span>
+      <span class="tag" id="qtag">Scope</span>
+    </div>
+    <div class="qbar"><i id="barFill"></i></div>
+    <p class="qtext" id="qtext"></p>
+    <div class="choices" id="choices"></div>
+    <div class="nav">
+      <button class="btn b2" id="backBtn">Back</button>
+      <button class="btn b1" id="nextBtn" disabled>Next</button>
+    </div>
+  </div>
 </div>
-<div class="grid4">
-<div class="mini"><div class="kk">_Standing</div><div class="num">78/100</div><p>Solid &mdash; Texas, under 250, sensitive data.</p></div>
-<div class="mini"><div class="kk">_Shield Reality</div><div class="num">72/100</div><p>How well your written program would hold up.</p></div>
-<div class="mini"><div class="kk">_Runway</div><div class="num">63/100</div><p>Mixed &mdash; proof and update cadence have gaps.</p></div>
-<div class="mini gold"><div class="kk">_Signal Reading</div><div class="num">Exposed 63</div><p>Exposure active &mdash; pause, listen, decide with logic.</p></div>
+
+<!-- ============ SCREEN 3: SAFE HARBOR BRIEF (RESULTS) ============ -->
+<div id="screen-result" class="wrap hidden">
+  <div class="card">
+    <div class="k">Your DIM Result</div>
+    <h1>Your Safe Harbor Brief is ready.</h1>
+    <p class="lead" id="briefLead">You run a Texas business under 250 employees holding sensitive personal information, so SB 2610 covers you.</p>
+    <div><span class="pill">_SCOPE</span><span class="pill">_STANDARD</span><span class="pill">_SAFEGUARDS</span><span class="pill">_SUBSTANTIATION</span><span class="pill">_SUSTAINED</span></div>
+    <div class="btns"><button class="btn b1" id="continueBtn">Continue</button><button class="btn b2" id="askBtn">Ask David to review</button></div>
+  </div>
+
+  <div class="card">
+    <div class="k">Your SB 2610 Score</div>
+    <div class="radar">
+      <svg width="330" height="300" viewBox="0 0 330 300">
+        <g fill="none" stroke="#1f3a2e">
+          <polygon points="165,40 285,128 239,268 91,268 45,128"/>
+          <polygon points="165,90 235,141 208,225 122,225 95,141"/>
+        </g>
+        <polygon id="radarPoly" points="165,55 250,132 232,255 108,240 70,135" fill="rgba(63,191,135,.22)" stroke="#3fbf87" stroke-width="2"/>
+        <g fill="#8ea89a" font-size="11" font-weight="600" text-anchor="middle">
+          <text x="165" y="28">_SCOPE</text>
+          <text x="300" y="132">_STANDARD</text>
+          <text x="250" y="288">_SAFEGUARDS</text>
+          <text x="80" y="288">_SUBSTANTIATION</text>
+          <text x="28" y="132">_SUSTAINED</text>
+        </g>
+      </svg>
+    </div>
+    <div class="grid4">
+      <div class="mini"><div class="kk">_Standing</div><div class="num" id="mStanding">78/100</div><p>Solid &mdash; Texas, under 250, sensitive data.</p></div>
+      <div class="mini"><div class="kk">_Shield Reality</div><div class="num" id="mShield">72/100</div><p>How well your written program would hold up.</p></div>
+      <div class="mini"><div class="kk">_Runway</div><div class="num" id="mRunway">63/100</div><p>Proof and update cadence.</p></div>
+      <div class="mini gold"><div class="kk">_Signal Reading</div><div class="num" id="mSignal">Exposed 63</div><p id="mSignalNote">Exposure active &mdash; pause, listen, decide with logic.</p></div>
+    </div>
+  </div>
+
+  <div class="card full">
+    <div class="k">What Your DIM Means</div>
+    <h1 style="font-size:20px">The five _S axes, tuned to the law</h1>
+    <div style="margin-top:12px">
+      <div class="axis"><span>_Scope &mdash; Texas + sub-250 + covered PII</span><b id="vScope">90</b></div><div class="bar"><i id="barScope"></i></div>
+      <div class="axis"><span>_Standard &mdash; framework match by size tier</span><b id="vStandard">72</b></div><div class="bar"><i id="barStandard"></i></div>
+      <div class="axis"><span>_Safeguards &mdash; admin + technical + physical</span><b id="vSafeguards">81</b></div><div class="bar"><i id="barSafeguards"></i></div>
+      <div class="axis"><span>_Substantiation &mdash; documented, dated, versioned</span><b id="vSubstantiation">54</b></div><div class="bar"><i id="barSubstantiation"></i></div>
+      <div class="axis"><span>_Sustained &mdash; current with framework revisions</span><b id="vSustained">60</b></div><div class="bar"><i id="barSustained"></i></div>
+    </div>
+    <p class="foot">Readiness estimate only. Not legal advice and no guarantee of safe harbor. Actual damages, fines, and other remedies may still apply. Model v1.0 &middot; C-confidence until artifacts verified.</p>
+  </div>
 </div>
-</div>
-<div class="card full">
-<div class="k">What Your DIM Means</div>
-<h1 style="font-size:20px">The five _S axes, tuned to the law</h1>
-<div style="margin-top:12px">
-<div class="axis"><span>_Scope &mdash; Texas + sub-250 + covered PII</span><b>90</b></div><div class="bar"><i style="width:90%"></i></div>
-<div class="axis"><span>_Standard &mdash; framework match by size tier</span><b>72</b></div><div class="bar"><i style="width:72%"></i></div>
-<div class="axis"><span>_Safeguards &mdash; admin + technical + physical</span><b>81</b></div><div class="bar"><i style="width:81%"></i></div>
-<div class="axis"><span>_Substantiation &mdash; documented, dated, versioned</span><b>54</b></div><div class="bar"><i style="width:54%"></i></div>
-<div class="axis"><span>_Sustained &mdash; current with framework revisions</span><b>60</b></div><div class="bar"><i style="width:60%"></i></div>
-</div>
-<p class="foot">Readiness estimate only. Not legal advice and no guarantee of safe harbor. Actual damages, fines, and other remedies may still apply. Model v1.0 &middot; C-confidence until artifacts verified.</p>
-</div>
-</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- 10 questions, each tagged to one of the five _S axes ----
+  // weight: contribution of a "yes/best" answer toward that axis (0..1 of the option value)
+  var QUESTIONS = [
+    { axis:"Scope", tag:"Scope",
+      q:"Is your business based in Texas (or do you handle the personal data of Texas residents)?",
+      opts:[["Yes — Texas business / Texas residents' data",1],["Partly / not sure",0.5],["No",0]] },
+    { axis:"Scope", tag:"Scope",
+      q:"How many employees does your business have?",
+      opts:[["Fewer than 20",1],["20–99",1],["100–249",0.9],["250 or more",0.4]] },
+    { axis:"Scope", tag:"Scope",
+      q:"Do you collect or store sensitive or personal information (SSNs, health, financial, customer PII)?",
+      opts:[["Yes — clearly sensitive PII",1],["Some low-sensitivity data",0.5],["No personal data at all",0.1]] },
+    { axis:"Standard", tag:"Standard",
+      q:"Have you adopted a recognized cybersecurity framework (NIST, CIS Controls, ISO 27001, etc.)?",
+      opts:[["Yes — a named framework, matched to our size",1],["Informal / homegrown controls only",0.45],["No framework",0]] },
+    { axis:"Standard", tag:"Standard",
+      q:"Is that framework scaled to your size tier (right-sized, not copy-pasted)?",
+      opts:[["Yes — deliberately right-sized",1],["Roughly, not formally scaled",0.5],["No / N/A",0.1]] },
+    { axis:"Safeguards", tag:"Safeguards",
+      q:"Do you have administrative, technical, AND physical safeguards in place?",
+      opts:[["All three, actively in use",1],["One or two of the three",0.5],["None in place",0]] },
+    { axis:"Safeguards", tag:"Safeguards",
+      q:"Are core technical controls live today (MFA, encryption, access control, backups)?",
+      opts:[["Yes — all core controls live",1],["Some, partially deployed",0.5],["No / minimal",0.1]] },
+    { axis:"Substantiation", tag:"Substantiation",
+      q:"Is your program written down — documented, dated, and version-controlled?",
+      opts:[["Yes — documented, dated, versioned",1],["Some documentation, not dated/versioned",0.4],["Nothing written",0]] },
+    { axis:"Substantiation", tag:"Substantiation",
+      q:"Could you PROVE the program existed and was current on a specific past date?",
+      opts:[["Yes — we can show dated evidence",1],["Maybe, with effort",0.4],["No — no verifiable trail",0]] },
+    { axis:"Sustained", tag:"Sustained",
+      q:"Do you review and update the program on a regular cadence as frameworks revise?",
+      opts:[["Yes — scheduled reviews, kept current",1],["Occasionally / ad hoc",0.45],["Never reviewed after setup",0]] }
+  ];
+
+  var AXES = ["Scope","Standard","Safeguards","Substantiation","Sustained"];
+  var answers = new Array(QUESTIONS.length).fill(null); // stores chosen option value 0..1
+  var idx = 0;
+
+  // ---- element refs ----
+  var elIntro   = document.getElementById("screen-intro");
+  var elQ       = document.getElementById("screen-q");
+  var elResult  = document.getElementById("screen-result");
+  var startBtn  = document.getElementById("startBtn");
+  var backBtn   = document.getElementById("backBtn");
+  var nextBtn   = document.getElementById("nextBtn");
+  var stepLabel = document.getElementById("stepLabel");
+  var qtag      = document.getElementById("qtag");
+  var barFill   = document.getElementById("barFill");
+  var qtext     = document.getElementById("qtext");
+  var choices   = document.getElementById("choices");
+
+  function show(el){ elIntro.classList.add("hidden"); elQ.classList.add("hidden"); elResult.classList.add("hidden"); el.classList.remove("hidden"); window.scrollTo(0,0); }
+
+  function renderQuestion(){
+    var Q = QUESTIONS[idx];
+    stepLabel.textContent = "Question " + (idx+1) + " of " + QUESTIONS.length;
+    qtag.textContent = Q.tag;
+    barFill.style.width = ((idx)/QUESTIONS.length*100) + "%";
+    qtext.textContent = Q.q;
+    choices.innerHTML = "";
+    Q.opts.forEach(function(opt, i){
+      var d = document.createElement("div");
+      d.className = "choice" + (answers[idx] !== null && answers[idx].i === i ? " sel" : "");
+      d.innerHTML = '<span class="dot"></span><span>' + opt[0] + '</span>';
+      d.addEventListener("click", function(){
+        answers[idx] = { i:i, v:opt[1] };
+        // repaint selection
+        Array.prototype.forEach.call(choices.children, function(c){ c.classList.remove("sel"); });
+        d.classList.add("sel");
+        nextBtn.disabled = false;
+      });
+      choices.appendChild(d);
+    });
+    backBtn.disabled = (idx === 0);
+    nextBtn.disabled = (answers[idx] === null);
+    nextBtn.textContent = (idx === QUESTIONS.length - 1) ? "See my Safe Harbor Brief" : "Next";
+  }
+
+  function computeScores(){
+    var sum = {}, cnt = {};
+    AXES.forEach(function(a){ sum[a]=0; cnt[a]=0; });
+    QUESTIONS.forEach(function(Q, i){
+      var v = answers[i] ? answers[i].v : 0;
+      sum[Q.axis] += v; cnt[Q.axis] += 1;
+    });
+    var out = {};
+    AXES.forEach(function(a){ out[a] = Math.round((cnt[a] ? sum[a]/cnt[a] : 0) * 100); });
+    return out;
+  }
+
+  // radar geometry: base pentagon vertices (matching the SVG label positions), center ~ (165,150)
+  var CENTER = {x:165, y:150};
+  var VERT = { // unit direction from center to each axis's outer point (from the outer guide polygon)
+    Scope:          {x:165, y:40},
+    Standard:       {x:285, y:128},
+    Safeguards:     {x:239, y:268},
+    Substantiation: {x:91,  y:268},
+    Sustained:      {x:45,  y:128}
+  };
+
+  function radarPoints(scores){
+    return AXES.map(function(a){
+      var t = Math.max(0.08, scores[a]/100); // fraction along the axis
+      var x = CENTER.x + (VERT[a].x - CENTER.x) * t;
+      var y = CENTER.y + (VERT[a].y - CENTER.y) * t;
+      return x.toFixed(0) + "," + y.toFixed(0);
+    }).join(" ");
+  }
+
+  function renderResults(){
+    var s = computeScores();
+
+    // per-axis bars + values
+    var map = {Scope:"Scope",Standard:"Standard",Safeguards:"Safeguards",Substantiation:"Substantiation",Sustained:"Sustained"};
+    Object.keys(map).forEach(function(a){
+      document.getElementById("v"+a).textContent = s[a];
+      document.getElementById("bar"+a).style.width = s[a] + "%";
+    });
+
+    // radar polygon
+    document.getElementById("radarPoly").setAttribute("points", radarPoints(s));
+
+    // composite mini-cards
+    var standing = s.Scope; // covered-ness
+    var shield   = Math.round((s.Standard + s.Safeguards)/2);
+    var runway   = Math.round((s.Substantiation + s.Sustained)/2);
+    var overall  = Math.round((s.Scope + s.Standard + s.Safeguards + s.Substantiation + s.Sustained)/5);
+
+    document.getElementById("mStanding").textContent = standing + "/100";
+    document.getElementById("mShield").textContent   = shield + "/100";
+    document.getElementById("mRunway").textContent   = runway + "/100";
+
+    var signalWord = overall >= 75 ? "Defensible" : (overall >= 55 ? "Exposed" : "At Risk");
+    document.getElementById("mSignal").textContent = signalWord + " " + overall;
+    document.getElementById("mSignalNote").textContent =
+      overall >= 75 ? "Strong footing — keep the proof trail current." :
+      overall >= 55 ? "Exposure active — pause, listen, decide with logic." :
+                      "High exposure — close documentation gaps first.";
+
+    // weakest + strongest axis for the lead line
+    var sortedAsc = AXES.slice().sort(function(a,b){ return s[a]-s[b]; });
+    var weakest = sortedAsc[0], strongest = sortedAsc[sortedAsc.length-1];
+    document.getElementById("briefLead").innerHTML =
+      "You run a Texas business under 250 employees holding sensitive personal information, so SB 2610 covers you. " +
+      "Your strongest ground is your <b style=\"color:var(--grn)\">" + strongest + "</b>; your biggest exposure is <b style=\"color:var(--gold)\">" + weakest +
+      "</b> &mdash; the gap to close before a breach. Recommended path: framework match for your size tier, as soon as possible.";
+
+    show(elResult);
+  }
+
+  // ---- wiring ----
+  startBtn.addEventListener("click", function(){ idx = 0; show(elQ); renderQuestion(); });
+  backBtn.addEventListener("click", function(){ if(idx>0){ idx--; renderQuestion(); } });
+  nextBtn.addEventListener("click", function(){
+    if(answers[idx] === null) return;
+    if(idx < QUESTIONS.length - 1){ idx++; renderQuestion(); }
+    else { renderResults(); }
+  });
+
+  document.getElementById("continueBtn").addEventListener("click", function(){
+    alert("Your Safe Harbor Brief has been captured. David will follow up to review your artifacts.");
+  });
+  document.getElementById("askBtn").addEventListener("click", function(){
+    alert("Request sent — David will review your SB 2610 results and reach out.");
+  });
+  document.getElementById("continueBtn").id = "continueBtn";
+
+  // retake helper: clicking the score header is not exposed; results screen is terminal per spec
+})();
+</script>
 </body>
 </html>
