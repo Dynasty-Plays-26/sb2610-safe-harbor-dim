@@ -40,6 +40,12 @@ p.lead{color:var(--mut);font-size:15px}
 .answer-btn:hover{border-color:var(--grn);background:#1c332a}
 .answer-btn.is-selected{border-color:var(--grn);background:#1c332a}
 .answer-btn.is-selected::before{border-color:var(--grn);box-shadow:inset 0 0 0 4px var(--grn)}
+.answer-btn.is-confirmed{border-color:var(--grn);background:#20402f;box-shadow:0 0 0 2px rgba(63,191,135,.35),0 0 18px 2px rgba(63,191,135,.45);animation:answerPulse .45s ease}
+.answer-btn.is-confirmed::before{border-color:var(--grn);box-shadow:inset 0 0 0 6px var(--grn)}
+@keyframes answerPulse{0%{transform:scale(1)}40%{transform:scale(1.02)}100%{transform:scale(1)}}
+.answer-list.is-locked{pointer-events:none}
+#questionScreen{transition:opacity .28s ease}
+#questionScreen.is-fading{opacity:0}
 .q-nav{display:flex;gap:12px;margin-top:22px}
 .q-nav .btn{flex:1}
 
@@ -323,7 +329,8 @@ p.lead{color:var(--mut);font-size:15px}
 
   const state = {
     step: -1,
-    responses: {}
+    responses: {},
+    transitioning: false
   };
 
   const el = {
@@ -372,6 +379,7 @@ p.lead{color:var(--mut);font-size:15px}
   function startAssessment() {
     state.step = 0;
     state.responses = {};
+    state.transitioning = false;
     showScreen("questions");
     renderQuestion();
   }
@@ -379,6 +387,7 @@ p.lead{color:var(--mut);font-size:15px}
   function restartAssessment() {
     state.step = -1;
     state.responses = {};
+    state.transitioning = false;
     showScreen("intro");
   }
 
@@ -415,10 +424,42 @@ p.lead{color:var(--mut);font-size:15px}
     }
   }
 
-  function answerCurrent(value) {
+  function answerCurrent(value, clickedBtn) {
+    if (state.transitioning) return;
     const q = DIM_MODEL.questions[state.step];
     state.responses[q.id] = Number(value);
 
+    // Visual confirmation: highlight + glow the chosen answer before advancing.
+    if (el.answerList) {
+      state.transitioning = true;
+      el.answerList.classList.add("is-locked");
+      const btns = el.answerList.querySelectorAll(".answer-btn");
+      btns.forEach(b => b.classList.remove("is-selected", "is-confirmed"));
+      const target = clickedBtn || el.answerList.querySelector(`.answer-btn[data-value="${value}"]`);
+      if (target) target.classList.add("is-selected", "is-confirmed");
+
+      const isLast = state.step >= DIM_MODEL.questions.length - 1;
+      const questionScreen = document.getElementById("questionScreen");
+
+      // Hold on the confirmed selection, then fade out and advance.
+      setTimeout(() => {
+        if (questionScreen) questionScreen.classList.add("is-fading");
+        setTimeout(() => {
+          if (isLast) {
+            renderResults();
+          } else {
+            state.step += 1;
+            renderQuestion();
+          }
+          if (questionScreen) questionScreen.classList.remove("is-fading");
+          if (el.answerList) el.answerList.classList.remove("is-locked");
+          state.transitioning = false;
+        }, 280);
+      }, 480);
+      return;
+    }
+
+    // Fallback (no answer list element): original immediate behavior.
     if (state.step < DIM_MODEL.questions.length - 1) {
       state.step += 1;
       renderQuestion();
@@ -578,7 +619,7 @@ p.lead{color:var(--mut);font-size:15px}
   document.addEventListener("click", (event) => {
     const answerBtn = event.target.closest(".answer-btn");
     if (answerBtn) {
-      answerCurrent(answerBtn.dataset.value);
+      answerCurrent(answerBtn.dataset.value, answerBtn);
       return;
     }
 
