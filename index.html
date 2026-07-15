@@ -574,7 +574,8 @@ p.lead{color:var(--mut);font-size:15px}
 
     return order.map((axisKey, index) => {
       const angle = (-90 + index * 72) * (Math.PI / 180);
-      const r = radius * (axisScores[axisKey] / 100);
+      const minR = radius * 0.06;
+      const r = minR + (radius - minR) * (axisScores[axisKey] / 100);
       const x = cx + Math.cos(angle) * r;
       const y = cy + Math.sin(angle) * r;
       return `${x.toFixed(1)},${y.toFixed(1)}`;
