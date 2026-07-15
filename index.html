@@ -69,6 +69,15 @@ p.lead{color:var(--mut);font-size:15px}
 .brief-card__score{font-size:18px;font-weight:800;color:var(--grn)}
 .brief-card__body{color:var(--mut);font-size:13px;margin:0}
 .subhead{font-size:13px;font-weight:700;color:var(--tx);margin:0 0 4px}
+.gate-note{color:var(--mut);font-size:12px;margin:12px 0 0;line-height:1.5}.gate-note b{color:var(--grn)}
+.expert{display:flex;gap:16px;margin-top:14px;align-items:flex-start}
+.expert__avatar{flex:0 0 auto;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--grn),var(--gold));display:flex;align-items:center;justify-content:center;color:#062015;font-weight:800;font-size:18px;letter-spacing:.02em}
+.expert__name{font-size:17px;font-weight:800;color:var(--tx);margin:0}
+.expert__title{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:2px 0 8px}
+.expert__bio{color:var(--mut);font-size:13px;line-height:1.6;margin:0 0 10px}.expert__bio b{color:var(--tx);font-weight:700}
+.expert__tags{margin:0 0 8px}
+.expert__foot{color:var(--mut);font-size:12px;margin:6px 0 0;line-height:1.5}.expert__foot b{color:var(--grn)}
+@media(max-width:720px){.expert{flex-direction:column}}
 .foot{color:var(--mut);font-size:11.5px;margin-top:16px;border-top:1px solid var(--ln);padding-top:12px}
 .legal{color:var(--mut);opacity:.85;font-size:10.5px;line-height:1.5;text-align:center;margin:10px 0 4px;letter-spacing:.02em}
 @media print{body{background:#fff;color:#000}.legal{color:#000;opacity:1;border-top:1px solid #ccc;padding-top:8px}.btns,.q-nav{display:none}}
@@ -135,9 +144,11 @@ p.lead{color:var(--mut);font-size:15px}
     <p class="lead" id="overallSummary"></p>
     <div style="margin-top:8px"><span class="pill">_SCOPE</span><span class="pill">_STANDARD</span><span class="pill">_SAFEGUARDS</span><span class="pill">_SUBSTANTIATION</span><span class="pill">_SUSTAINED</span></div>
     <div class="btns">
-      <button type="button" class="btn b1">Ask David to review</button>
+      <button type="button" class="btn b1">Ask Rex</button>
+      <button type="button" class="btn b2">Ask the Expert</button>
       <button type="button" class="btn b2" data-action="restart">Retake</button>
     </div>
+    <p class="gate-note">Rex is your AI concierge for the GRC lane &mdash; instant answers, no waiting. Prefer a human? <b>Ask the Expert</b> routes you to David M. Williams.</p>
   </div>
 
   <div class="card">
@@ -171,6 +182,20 @@ p.lead{color:var(--mut);font-size:15px}
       <div class="axis"><span>_Safeguards &mdash; what controls exist</span><b id="axisScoreSafeguards">0</b></div><div class="bar"><i id="axisBarSafeguards"></i></div>
       <div class="axis"><span>_Substantiation &mdash; what evidence exists</span><b id="axisScoreSubstantiation">0</b></div><div class="bar"><i id="axisBarSubstantiation"></i></div>
       <div class="axis"><span>_Sustained &mdash; how well it holds over time</span><b id="axisScoreSustained">0</b></div><div class="bar"><i id="axisBarSustained"></i></div>
+    </div>
+  </div>
+
+  <div class="card full">
+    <div class="k">Your Human-in-the-Loop Expert</div>
+    <div class="expert">
+      <div class="expert__avatar">DW</div>
+      <div class="expert__body">
+        <h3 class="expert__name">David M. Williams, CPA</h3>
+        <div class="expert__title">GRC &amp; Cyber Risk Lead &middot; Dynasty GRC Lane</div>
+        <p class="expert__bio">David is a governance, risk &amp; compliance leader focused on cybersecurity, third-party and supply-chain risk, internal controls, and AI governance. As Director of Supply Chain Risk Management, Cybersecurity, GRC &amp; ERP Solutions at InforumTech, he helps organizations close control gaps and build defensible, audit-ready programs. His credentials include <b>CPA</b> (Texas), <b>ISC2 Certified in Cybersecurity</b>, <b>NIST Cybersecurity Framework 2.0</b>, <b>SOC 2</b>, ISC2 Risk Management Practitioner, and <b>APICS CSCP</b> &mdash; spanning NIST, access governance, segregation of duties, and AI governance &amp; strategy. Based in the Fort Worth / Houston, Texas area.</p>
+        <div class="expert__tags"><span class="pill">CPA</span><span class="pill">ISC2 CC</span><span class="pill">NIST CSF 2.0</span><span class="pill">SOC 2</span><span class="pill">AI Governance</span><span class="pill">Third-Party Risk</span></div>
+        <p class="expert__foot"><b>Rex</b> (AI concierge) handles your first questions instantly. When you want a human, <b>Ask the Expert</b> connects you with David.</p>
+      </div>
     </div>
   </div>
 
