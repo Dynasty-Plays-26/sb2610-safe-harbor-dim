@@ -25,7 +25,7 @@ p.lead{color:var(--mut);font-size:15px}
 .brand .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--grn),var(--gold));display:flex;align-items:center;justify-content:center;color:#062015;font-weight:800;font-size:15px}
 .brand .t{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
 .brand .t b{color:var(--tx);font-weight:700}
-.brand .spot{margin-left:auto;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid #554311;padding:4px 9px;border-radius:999px;background:rgba(217,164,65,.08)}
+.brand .spot{margin-left:auto;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid #554311;padding:5px 11px;border-radius:999px;background:rgba(217,164,65,.08);white-space:nowrap;line-height:1.3}
 .rule{background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:14px 16px;color:var(--tx);font-size:14.5px;margin:14px 0 22px}
 .rule b{color:var(--gold)}
 
@@ -78,6 +78,7 @@ p.lead{color:var(--mut);font-size:15px}
 .expert__tags{margin:0 0 8px}
 .expert__doctrine{color:var(--tx);font-size:12.5px;line-height:1.55;margin:0 0 8px;padding:10px 12px;border-left:2px solid var(--gold);background:rgba(217,164,65,.06);border-radius:0 8px 8px 0}.expert__doctrine b{color:var(--gold)}
 .expert__foot{color:var(--mut);font-size:12px;margin:6px 0 0;line-height:1.5}.expert__foot b{color:var(--grn)}
+.expert__mail{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(217,164,65,.4)}.expert__mail:hover{color:var(--grn);border-bottom-color:var(--grn)}
 @media(max-width:720px){.expert{flex-direction:column}}
 .foot{color:var(--mut);font-size:11.5px;margin-top:16px;border-top:1px solid var(--ln);padding-top:12px}
 .legal{color:var(--mut);opacity:.85;font-size:10.5px;line-height:1.5;text-align:center;margin:10px 0 4px;letter-spacing:.02em}
@@ -145,8 +146,8 @@ p.lead{color:var(--mut);font-size:15px}
     <p class="lead" id="overallSummary"></p>
     <div style="margin-top:8px"><span class="pill">_SCOPE</span><span class="pill">_STANDARD</span><span class="pill">_SAFEGUARDS</span><span class="pill">_SUBSTANTIATION</span><span class="pill">_SUSTAINED</span></div>
     <div class="btns">
-      <button type="button" class="btn b1">Ask Rex</button>
-      <button type="button" class="btn b2">Ask the Expert</button>
+      <button type="button" class="btn b1" data-action="ask-rex">Ask Rex</button>
+      <button type="button" class="btn b2" data-action="ask-expert">Ask the Expert</button>
       <button type="button" class="btn b2" data-action="restart">Retake</button>
     </div>
     <p class="gate-note">Rex is your AI concierge for the GRC lane &mdash; instant answers, no waiting. Prefer a human? <b>Ask the Expert</b> routes you to David M. Williams.</p>
@@ -196,7 +197,7 @@ p.lead{color:var(--mut);font-size:15px}
         <p class="expert__bio">David is the authority behind Dynasty&rsquo;s <b>Governance, Risk &amp; Compliance</b> lane &mdash; a teacher at heart whose mission is making GRC clear, practical, and defensible for the people who have to live it. Backed by a deep supply-chain background and a <b>CPA</b> foundation, he brings the discipline of internal controls, third-party risk, and audit-ready programs to every engagement. Just as important: David seeded the corpus that Dynasty&rsquo;s <b>ethical-AI</b> practice is built on &mdash; the founding influence that shapes how every lane in the ecosystem makes decisions. Credentials include <b>CPA</b> (Texas), <b>ISC2 Certified in Cybersecurity</b>, <b>NIST Cybersecurity Framework 2.0</b>, <b>SOC 2</b>, and <b>APICS CSCP</b>. Based in the Fort Worth / Houston, Texas area.</p>
         <div class="expert__tags"><span class="pill">GRC Chair</span><span class="pill">Ethical AI</span><span class="pill">CPA</span><span class="pill">NIST CSF 2.0</span><span class="pill">SOC 2</span><span class="pill">Supply-Chain Risk</span></div>
         <p class="expert__doctrine">Every Dynasty decision runs on one spine: <b>the user comes first at every intersection</b> &mdash; transparent, ethical, and client-centric by design. Better inputs, better decisions, across every lane.</p>
-        <p class="expert__foot"><b>Rex</b> (AI concierge) handles your first questions instantly. When you want a human, <b>Ask the Expert</b> connects you with David.</p>
+        <p class="expert__foot"><b>Rex</b> (AI concierge) handles your first questions instantly. When you want a human, <b>Ask the Expert</b> connects you with David &mdash; <a class="expert__mail" href="mailto:david.m.williams@dynastyplays.com?subject=SB%202610%20Safe%20Harbor%20%E2%80%94%20GRC%20lane">david.m.williams@dynastyplays.com</a>.</p>
       </div>
     </div>
   </div>
@@ -660,7 +661,41 @@ p.lead{color:var(--mut);font-size:15px}
       el.radarPolygon.setAttribute("points", buildRadarPoints(scores.axisScores));
     }
 
+    state.lastResult = { overall: scores.overall, band: brief.bandLabel, axisScores: scores.axisScores };
+
     showScreen("results");
+  }
+
+  const CONTACT = {
+    expertEmail: "david.m.williams@dynastyplays.com",
+    // When Rex has a live endpoint, set rexUrl to that URL and the button will link straight to it.
+    rexUrl: ""
+  };
+
+  function resultContext() {
+    const r = state.lastResult;
+    if (!r) return "";
+    const lines = Object.entries(r.axisScores)
+      .map(([k, v]) => `  - ${DIM_MODEL.axes[k].label}: ${v}`).join("\n");
+    return `My SB 2610 Safe Harbor DIM result:\n  - Overall DIM Score: ${r.overall} (${r.band})\n${lines}\n\nI'd like to talk through what this means and my next steps.`;
+  }
+
+  function askExpert() {
+    const subject = state.lastResult
+      ? `SB 2610 Safe Harbor \u2014 DIM ${state.lastResult.overall} (${state.lastResult.band}) \u2014 review request`
+      : "SB 2610 Safe Harbor \u2014 review request";
+    const body = resultContext() || "I'd like to discuss my SB 2610 Safe Harbor readiness.";
+    window.location.href = `mailto:${CONTACT.expertEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  function askRex() {
+    if (CONTACT.rexUrl) { window.open(CONTACT.rexUrl, "_blank", "noopener"); return; }
+    // Rex (David's AI concierge) is coming online \u2014 route the request to the expert inbox for now so nothing dead-ends.
+    const subject = state.lastResult
+      ? `Ask Rex \u2014 SB 2610 DIM ${state.lastResult.overall} (${state.lastResult.band})`
+      : "Ask Rex \u2014 SB 2610 Safe Harbor";
+    const body = `${resultContext() || "I just completed the SB 2610 Safe Harbor DIM."}\n\n(Rex, the GRC AI concierge, is coming online shortly. In the meantime this request is routed to the Dynasty GRC lane.)`;
+    window.location.href = `mailto:${CONTACT.expertEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   document.addEventListener("click", (event) => {
@@ -677,6 +712,16 @@ p.lead{color:var(--mut);font-size:15px}
 
     if (event.target.closest("#backBtn")) {
       goBack();
+      return;
+    }
+
+    if (event.target.closest("[data-action='ask-rex']")) {
+      askRex();
+      return;
+    }
+
+    if (event.target.closest("[data-action='ask-expert']")) {
+      askExpert();
       return;
     }
 
